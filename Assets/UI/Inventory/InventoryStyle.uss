@@ -24,14 +24,15 @@
     padding-left: 0;
     padding-right: 0;
     padding-top: 0;
-    border-left-color: rgb(75, 75, 75);
-    border-right-color: rgb(75, 75, 75);
-    border-top-color: rgb(75, 75, 75);
-    border-bottom-color: rgb(75, 75, 75);
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
+    border-left-color: rgb(29, 29, 29);
+    border-right-color: rgb(29, 29, 29);
+    border-top-color: rgb(29, 29, 29);
+    border-bottom-color: rgb(29, 29, 29);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-top-width: 3px;
+    border-bottom-width: 3px;
+    background-color: rgb(48, 48, 48);
 }
 
 .inventory_slot_highlight {
@@ -71,10 +72,81 @@
     height: 100%;
     font-size: 24px;
     -unity-font-style: bold;
-    background-color: rgb(226, 137, 45);
-    border-left-color: rgb(226, 137, 45);
-    border-right-color: rgb(226, 137, 45);
-    border-top-color: rgb(226, 137, 45);
-    border-bottom-color: rgb(226, 137, 45);
+    background-color: rgb(22, 113, 29);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(115, 115, 115);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(116, 116, 116);
+    color: rgb(238, 238, 238);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.button:hover {
+    flex-grow: 1;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 100%;
+    font-size: 24px;
+    -unity-font-style: bold;
+    background-color: rgb(36, 144, 44);
+    border-left-color: rgb(255, 255, 255);
+    border-right-color: rgb(115, 115, 115);
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(116, 116, 116);
+    color: rgb(238, 238, 238);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+}
+
+.button:active {
+    flex-grow: 1;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 100%;
+    font-size: 24px;
+    -unity-font-style: bold;
+    background-color: rgb(18, 87, 23);
+    border-left-color: rgb(116, 116, 116);
+    border-right-color: rgb(255, 255, 255);
+    border-top-color: rgb(116, 116, 116);
+    border-bottom-color: rgb(255, 255, 255);
+    color: rgb(238, 238, 238);
+}
+
+.button:disabled {
+    flex-grow: 1;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 100%;
+    font-size: 24px;
+    -unity-font-style: bold;
+    background-color: rgb(83, 118, 86);
+    border-left-color: rgb(48, 84, 52);
+    border-right-color: rgb(48, 84, 52);
+    border-top-color: rgb(48, 84, 52);
+    border-bottom-color: rgb(48, 84, 52);
     color: rgb(238, 238, 238);
 }

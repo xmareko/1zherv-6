@@ -121,20 +121,20 @@ public class InventoryManager : MonoBehaviour
     private async void SetupInventory()
     {
         inventoryReady = false;
-        
+
         mRoot = GetComponentInChildren<UIDocument>().rootVisualElement;
         mRoot.style.visibility = Visibility.Hidden;
         //mRoot.style.display = DisplayStyle.None;
-        
+
         mInventoryGrid = mRoot.Q<VisualElement>("InventoryGrid");
 
         mCurrencyValue = mRoot.Q<Label>("CurrencyValue");
-        
+
         var itemDetails = mRoot.Q<VisualElement>("ItemDetailContainer");
         mItemDetailName = itemDetails.Q<Label>("ItemDetailName");
         mItemDetailDescription = itemDetails.Q<Label>("ItemDetailDescription");
         mItemDetailCost = itemDetails.Q<Label>("ItemDetailCost");
-        
+
         /*
          * Task 2c: Link the Button
          *
@@ -153,6 +153,9 @@ public class InventoryManager : MonoBehaviour
          * this is that whenever we press the button, CreateItem() will
          * be called.
          */
+
+        mItemCreateButton = itemDetails.Q<Button>("ItemDetailButtonCreate");
+        mItemCreateButton.clicked += () => CreateItem();
         
         
         
@@ -389,9 +392,23 @@ public class InventoryManager : MonoBehaviour
         
         if (item == null)
         { // We have no item selected -> Provide some default information.
+            mItemDetailName.text = "No item selected.";
+            mItemDetailDescription.text = ":-$";
+            mItemDetailCost.text = "?";
+            if (mItemCreateButton != null)
+            {
+                mItemCreateButton.SetEnabled(false);
+            }
         }
         else
         { // We have item selected -> Use the item information.
+            mItemDetailName.text = item.definition.readableName;
+            mItemDetailDescription.text = item.definition.readableDescription;
+            mItemDetailCost.text = item.definition.cost.ToString();
+            if (mItemCreateButton != null)
+            {
+                mItemCreateButton.SetEnabled(item.definition.cost <= availableCurrency);
+            }
         }
         
         selectedItem = item;
@@ -424,9 +441,23 @@ public class InventoryManager : MonoBehaviour
          * it from the cost (itemDefinition.cost) from availableCurrency property.
          * These items are not cheap to make!
          */
+
+        if (selectedItem == null)
+            return false;
         
-        var itemDefinition = selectedItem?.definition;
-        
-        return false;
+        var itemDefinition = selectedItem.definition;
+        if (itemDefinition.cost > availableCurrency)
+            return false;
+
+        availableCurrency -= itemDefinition.cost;
+
+        GameObject newItem = Instantiate(
+            itemDefinition.prefab, createDestination.transform.position, Quaternion.identity, createDestination.transform
+        );
+
+        if (newItem == null)
+            return false;
+
+        return true;
     }
 }
